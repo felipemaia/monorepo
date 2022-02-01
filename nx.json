@@ -1,0 +1,20 @@
+{
+  "extends": "@nrwl/workspace/presets/core.json",
+  "npmScope": "monorepo-lemon",
+  "affected": {
+    "defaultBase": "main"
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/nest"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "accessToken": "ZTYyMDliNDYtNmZkMS00YzBkLThmN2EtOTA3MGFkOWMzNTQyfHJlYWQtd3JpdGU="
+      }
+    }
+  },
+  "defaultProject": "api"
+}
