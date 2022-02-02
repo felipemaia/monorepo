@@ -16,7 +16,7 @@ import { CoreService } from './model/core/core.service';
     MongooseModule.forRoot('mongodb://localhost:27017/graphql'),
     CoreModule,
     GraphQLModule.forRoot({
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      autoSchemaFile: join(process.cwd(), 'schemas/schema.gql'),
       sortSchema: true,
       playground: true,
       debug: false,
