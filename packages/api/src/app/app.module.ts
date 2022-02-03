@@ -13,7 +13,6 @@ import { CoreService } from './model/core/core.service';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/graphql'),
     CoreModule,
     GraphQLModule.forRoot({
       autoSchemaFile: join(process.cwd(), 'schemas/schema.gql'),
@@ -21,6 +20,7 @@ import { CoreService } from './model/core/core.service';
       playground: true,
       debug: false,
     }),
+    MongooseModule.forRoot('mongodb://localhost:27017/graphql'),
   ],
   controllers: [AppController],
   providers: [AppService],

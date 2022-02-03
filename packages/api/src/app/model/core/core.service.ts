@@ -2,14 +2,14 @@ import { Model } from "mongoose";
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Core } from "./interfaces/core.interface";
-import { CreateCoreDto } from "./dto/create-core.dto";
+import { CoreInput } from "./inputs/core.input";
 
 @Injectable()
 export class CoreService {
     constructor(@InjectModel('Core') private readonly coreModel: Model<Core>) {}
 
-    async create(createCoreDto: CreateCoreDto): Promise<Core> {
-        const createdCore = new this.coreModel(createCoreDto)
+    async create(coreInput: CoreInput): Promise<Core> {
+        const createdCore = new this.coreModel(coreInput)
         return await createdCore.save()
     }
 

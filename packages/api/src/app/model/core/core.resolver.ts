@@ -1,13 +1,12 @@
-import { Float, Query, Resolver } from "@nestjs/graphql";
-import { Model } from "mongoose";
+import { Args, Float, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { CoreService } from "./core.service";
-import { CreateCoreDto } from "./dto/create-core.dto";
-import { Core } from "./interfaces/core.interface";
+import { CoreType } from "./dto/core-type.dto";
+import { CoreInput } from "./inputs/core.input";
 
 @Resolver()
 export class CoreResolver {
     constructor(
-        //private coreService: CoreService,
+        private coreService: CoreService,
     ){}
 
     @Query(() => Float)
@@ -15,7 +14,13 @@ export class CoreResolver {
         return process.uptime();
     }
 
-    
+    @Query(() => [CoreType])
+    async cores(){
+        return this.coreService.findAll()
+    }
 
-    
+    @Mutation(() => CoreType)
+    async createCore(@Args('input') input: CoreInput){
+        return this.coreService.create(input)
+    }
 }
